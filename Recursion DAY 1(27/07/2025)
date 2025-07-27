@@ -1,0 +1,47 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {
+        // printDecreasing(7);
+        // printIncreasing(7);
+        // printDecreasingIncreasing(7);
+        // System.out.print(factorial(5));
+        // System.out.print(power(5,4));
+        System.out.print(powerOptimal(5,4));
+    }
+    public static int powerOptimal(int x, int n) {
+        // TC: O(logN)
+        if(n==0) return 1;
+        int ans = powerOptimal(x,n/2) * powerOptimal(x,n/2);
+        if(n%2==1) ans = ans * x;
+        return ans;
+    }
+    public static int power(int x, int n) {
+        // TC: O(N)
+        if(n==0) return 1;
+        int ans = x * power(x,n-1);
+        return ans;
+    }
+    public static int factorial(int n) {
+        if(n==1) return 1;
+        int ans = n * factorial(n-1);
+        return ans;
+    }
+    public static void printDecreasing(int n) {
+        if(n==0) return;
+        System.out.print(n);
+        printDecreasing(n-1);
+    }
+    public static void printIncreasing(int n) {
+        if(n==0) return;
+        printIncreasing(n-1);
+        System.out.print(n);
+    }
+    public static void printDecreasingIncreasing(int n) {
+        if(n==0) return;
+        System.out.print(n);
+        printDecreasingIncreasing(n-1);
+        System.out.print(n);
+    }
+}
