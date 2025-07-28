@@ -1,0 +1,34 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        int[] arr = new int[n];
+        for(int i = 0; i < arr.length; i++) {
+            arr[i] = sc.nextInt();
+        }
+        // displayArr(arr, 0);
+        // displayArrRev(arr, 0);
+        System.out.print(maxOfArray(arr, 0));
+        
+    }
+    public static int maxOfArray(int[] arr, int idx) {
+        if(idx==arr.length) return Integer.MIN_VALUE;
+        int max = Math.max(arr[idx], maxOfArray(arr, idx+1));
+        return max;
+        
+    }
+    public static void displayArr(int[] arr, int idx) {
+        if(idx == arr.length) return;
+        System.out.print(arr[idx] + " ");
+        displayArr(arr, idx+1);
+    }
+    public static void displayArrRev(int[] arr, int idx) {
+        if(idx == arr.length) return;
+        displayArrRev(arr, idx+1);
+        System.out.print(arr[idx] + " ");
+    }
+}
